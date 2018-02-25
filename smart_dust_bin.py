@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import time
 
+GPIO.cleanup()
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
@@ -27,4 +28,12 @@ def getDistance():
 
     return(distance)
 
-print str(getDistance())
+def getPresence():
+    dist=getDistance()
+
+    if(dist <= 100):
+        return(True)
+    else:
+        return(False)
+
+print str(getPresence())
