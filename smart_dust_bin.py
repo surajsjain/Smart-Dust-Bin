@@ -37,3 +37,4 @@ def getPresence():
         return(False)
 
 print str(getPresence())
+GPIO.cleanup()
