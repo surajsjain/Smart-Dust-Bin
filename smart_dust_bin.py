@@ -50,10 +50,34 @@ def binOpen():
 def binClose():
     servo(17, 0)
 
+def getInDistance():
+    trig=20
+    echo=21
 
+    GPIO.setup(trig, GPIO.OUT)
+    GPIO.setup(echo, GPIO.IN)
+
+    GPIO.output(trig, True)
+    time.sleep(0.0001)
+    GPIO.output(trig, False)
+
+    while GPIO.input(echo) == False:
+        start=time.time()
+
+    while GPIO.input(echo) == True:
+        end=time.time()
+
+    sig_time= end-start
+
+    distance= sig_time/0.000058
+
+    return(distance)
 
 #print str(getPresence())
 
+print str(getInDistance())
+
+'''
 binClose()
 while(True):
     flag=0
@@ -62,7 +86,7 @@ while(True):
     while(presence == True):
         binOpen()
         flag=1
-        time.sleep(15)
+        time.sleep(7)
         presence=False
         presence=getPresence()
         time.sleep(0.5)
@@ -73,3 +97,4 @@ while(True):
     time.sleep(0.5)
 
 GPIO.cleanup()
+'''
