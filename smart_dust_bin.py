@@ -55,16 +55,17 @@ def binClose():
 #print str(getPresence())
 
 binClose()
-try:
-    while(True):
+while(True):
+    presence=getPresence()
+    time.sleep(0.5)
+    while(presence == True):
+        binOpen()
+        time.sleep(15)
+        presence=False
         presence=getPresence()
-        time.sleep(0.5)
-        while(presence == True):
-            binOpen()
-            time.sleep(15)
-            presence=getPresence()
         time.sleep(1)
-        binClose()
+    time.sleep(1)
+    binClose()
+    time.sleep(3)
 
-except KeyboardInterrupt:
-    GPIO.cleanup()
+GPIO.cleanup()
