@@ -66,6 +66,6 @@ while(True):
         time.sleep(1)
     time.sleep(1)
     binClose()
-    time.sleep(3)
+    time.sleep(1)
 
 GPIO.cleanup()
