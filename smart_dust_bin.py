@@ -59,7 +59,7 @@ try:
     while(True):
         presence=getPresence()
         time.sleep(0.5)
-        while(presence=True):
+        while(presence == True):
             binOpen()
             time.sleep(15)
             presence=getPresence()
@@ -68,6 +68,3 @@ try:
 
 except KeyboardInterrupt:
     GPIO.cleanup()
-
-
-    
