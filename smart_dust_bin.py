@@ -56,16 +56,20 @@ def binClose():
 
 binClose()
 while(True):
+    flag=0
     presence=getPresence()
     time.sleep(0.5)
     while(presence == True):
         binOpen()
+        flag=1
         time.sleep(15)
         presence=False
         presence=getPresence()
-        time.sleep(1)
-    time.sleep(1)
-    binClose()
-    time.sleep(1)
+        time.sleep(0.5)
+    time.sleep(0.5)
+    if(flag==1):
+        binClose()
+        flag=0
+    time.sleep(0.5)
 
 GPIO.cleanup()
