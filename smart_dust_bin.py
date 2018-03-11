@@ -35,5 +35,39 @@ def getPresence():
     else:
         return(False)
 
-print str(getPresence())
-GPIO.cleanup()
+def servo(pin, angle):
+	GPIO.setup(pin, GPIO.OUT)
+	pwm=GPIO.PWM(pin, 50)
+	p=angle*0.055555
+	p=p+2.5
+	pwm.start(p)
+	time.sleep(3)
+	pwm.stop()
+
+def binOpen():
+    servo(17, 130)
+
+def binClose():
+    servo(17, 0)
+
+
+
+#print str(getPresence())
+
+binClose()
+try:
+    while(True):
+        presence=getPresence()
+        time.sleep(0.5)
+        while(presence=True):
+            binOpen()
+            time.sleep(15)
+            presence=getPresence()
+        time.sleep(1)
+        binClose()
+
+except KeyboardInterrupt:
+    GPIO.cleanup()
+
+
+    
