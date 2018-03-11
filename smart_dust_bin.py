@@ -29,7 +29,7 @@ def getDistance():
 
 def getPresence():
     dist=getDistance()
-    maxDist = 500
+    maxDist = 75
     if(dist <= maxDist):
         return(True)
     else:
