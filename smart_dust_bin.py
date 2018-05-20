@@ -4,7 +4,7 @@ import time
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 
-def getDistance():
+def getDistance(): #To measure the distance using the distance sensor
     trig=4
     echo=18
 
@@ -27,7 +27,7 @@ def getDistance():
 
     return(distance)
 
-def getPresence():
+def getPresence(): #To judge the presence of a person as ber the distance measured by the distance sensor
     dist=getDistance()
     maxDist = 75
     if(dist <= maxDist):
@@ -60,7 +60,7 @@ while(True):
     while(presence == True):
         binOpen()
         flag=1
-        time.sleep(5)
+        time.sleep(7)
         presence=False
         presence=getPresence()
         time.sleep(0.5)
