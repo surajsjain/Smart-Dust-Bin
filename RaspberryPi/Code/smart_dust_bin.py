@@ -27,7 +27,7 @@ def getDistance(): #To measure the distance using the distance sensor
 
     return(distance)
 
-def getPresence(): #To judge the presence of a person as ber the distance measured by the distance sensor
+def getPresence(): #To judge the presence of a person as per the distance measured by the distance sensor
     dist=getDistance()
     maxDist = 75
     if(dist <= maxDist):
@@ -35,7 +35,7 @@ def getPresence(): #To judge the presence of a person as ber the distance measur
     else:
         return(False)
 
-def servo(pin, angle):
+def servo(pin, angle): #Rotates the servo motor at a given pin to the desired angle
 	GPIO.setup(pin, GPIO.OUT)
 	pwm=GPIO.PWM(pin, 50)
 	p=angle*0.055555
@@ -50,8 +50,8 @@ def binOpen():
 def binClose():
     servo(17, 0)
 
-#print str(getPresence())
 
+#The main program
 binClose()
 while(True):
     flag=0
